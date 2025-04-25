@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Магазин - Продаж Автозапчастин</title>
+    <link href="wdwdwd – копія.html" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #646464;
+            --secondary-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://cdn.pixabay.com/photo/2017/01/06/19/15/car-1957037_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e1e1e1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .products {
+            padding: 80px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e1e1e1;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+        
+   
+              /* Каталог меню - ідентичний до index.html */
+              #catalogMenu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-image: url('https://cdn.pixabay.com/photo/2017/01/06/19/15/car-1957037_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            animation: fadeSlideDown 0.4s ease forwards;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            width: 80%;
+            max-width: 1000px;
+        }
+
+    
+     
+
+      
+
+        /* Кошик */
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-cart:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        #cartCount {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            opacity: 0;
+            width: 400px;
+             height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+            opacity: 1;
+        }
+        
+        .cart-sidebar h3 {
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #cartItems {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        #cartItems li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-sidebar button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .cart-sidebar button:first-of-type {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .cart-sidebar button:first-of-type:hover {
+            background-color: #c82333;
+        }
+        
+        .cart-sidebar button:last-of-type {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .cart-sidebar button:last-of-type:hover {
+            background-color: #218838;
+        }
+        
+        /* Блог секція */
+        .blog-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .blog-post {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .blog-post h3 {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .blog-post p {
+            margin-bottom: 15px;
+        }
+        
+        /* Анімаційні елементи */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            #catalogMenu {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка-контейнер кошика -->
+    <div class="floating-cart" onclick="toggleCart()">
+        🛒 <span id="cartCount">0</span>
+    </div>
+    
+    <!-- Вміст кошика -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <h3>Ваш кошик</h3>
+        <ul id="cartItems"></ul>
+        <p><strong>Загальна сума: <span id="cartTotal">0</span> грн</strong></p>
+        <button onclick="clearCart()">Очистити</button>
+        <button onclick="goToPayment()">Оплатити</button>
+    </div>
+    
+    <!-- Header Section -->
+</head>
+<body>
+    <!-- ... (решта HTML залишається без змін до меню каталогу) ... -->
+    
+    <header>
+        <div class="container">
+            <a href="#" class="logo">мага<span>зин</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#" id="catalogButton">Каталог</a>
+                        <div id="catalogMenu">
+                          <div class="brand-block">
+                            <div class="brand-name">BMW</div>
+                            <div class="model-block">
+                              <div class="model-name">X5</div>
+                              <div class="parts-list">
+                                <a href="Гальмівні_ колодки.html">Гальмівні колодки</a>
+                                <a href="Фільтр_повітря.html">Фільтр повітря</a>
+                              </div>
+                              <div class="model-name">320i</div>
+                              <div class="parts-list">
+                                <a href="Амортизатор.html">Амортизатор</a>
+                                <a href="Свічки_запалювання.html">Свічки запалювання</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="brand-block">
+                            <div class="brand-name">Audi</div>
+                            <div class="model-block">
+                              <div class="model-name">A6</div>
+                              <div class="parts-list">
+                                <a href="Турбіна.html">Турбіна</a>
+                                <a href="Паливний_насос.html">Паливний насос</a>
+                              </div>
+                            </div>
+                          </div>
+                         
+                        </div>
+                      </li>
+                    <li><a href="#about">Про нас</a></li>
+                    <li><a href="#products">Товари</a></li>
+                    
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="animate">Якісні автозапчастини для вашого авто</h1>
+            <p class="animate delay-1">Широкий асортимент запчастин для всіх марок автомобілів за доступними цінами</p>
+            
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Чому обирають нас</h2>
+                <p>Ми пропонуємо тільки найкраще для вашого автомобіля</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Швидка доставка</h3>
+                    <p>Доставка по всій Україні протягом 1-3 днів</p>
+                </div>
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Оригінальні запчастини</h3>
+                    <p>Тільки сертифіковані запчастини від офіційних виробників</p>
+                </div>
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">💰</div>
+                    <h3>Конкурентні ціни</h3>
+                    <p>Найкращі ціни на ринку без посередників</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярні товари</h2>
+                <p>Найбільш затребувані запчастини у нашому магазині</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card animate">
+                    <a href="Моторне_масло_5W-40.html" class="product-image">
+                        <img src="https://dwfvpbrjajjfs.cloudfront.net/media/default/0001/24/45b8bcc26478edf9222d3bfcd5da04ab03d75486.png" alt="Моторне масло">
+                    </a>
+                    <div class="product-info">
+                        <h3><a href="Моторне_масло_5W-40.html">Моторне масло 5W-40</a></h3>
+                        <div class="product-price">450 грн</div>
+                        <button class="add-to-cart" onclick="addToCart('Моторне масло 5W-40', 450)">Додати в кошик</button>
+                    </div>
+                </div>
+                <div class="product-card animate delay-1">
+                    <a href="Гальмівні_колодки.html" class="product-image">
+                        <img src="https://dwfvpbrjajjfs.cloudfront.net/media/default/0001/24/45b8bcc26478edf9222d3bfcd5da04ab03d75486.png" alt="Гальмівні колодки">
+                    </a>
+                    <div class="product-info">
+                        <h3><a href="Гальмівні_колодки.html">Гальмівні колодки</a></h3>
+                        <div class="product-price">780 грн</div>
+                        <button class="add-to-cart" onclick="addToCart('Гальмівні колодки', 780)">Додати в кошик</button>
+                    </div>
+                </div>
+                <div class="product-card animate delay-2">
+                    <a href="Повітряний_фільтр.html" class="product-image">
+                        <img src="https://dwfvpbrjajjfs.cloudfront.net/media/default/0001/24/45b8bcc26478edf9222d3bfcd5da04ab03d75486.png" alt="Повітряний фільтр">
+                    </a>
+                    <div class="product-info">
+                        <h3><a href="Повітряний_фільтр.html">Повітряний фільтр</a></h3>
+                        <div class="product-price">320 грн</div>
+                        <button class="add-to-cart" onclick="addToCart('Повітряний фільтр', 320)">Додати в кошик</button>
+                    </div>
+                </div>
+                <div class="product-card animate delay-1">
+                    <a href="Акамулятор.html" class="product-image">
+                        <img src="https://rymax.in.ua/content/images/41/536x536l50nn0/55620185466883.png" alt="Акумулятор">
+                    </a>
+                    <div class="product-info">
+                        <h3><a href="Акамулятор.html">Акумулятор 60Ah</a></h3>
+                        <div class="product-price">2500 грн</div>
+                        <button class="add-to-cart" onclick="addToCart('Акумулятор 60Ah', 2500)">Додати в кошик</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="animated-feature" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 60px 40px; background: #fff;">
+        <div class="animated-image" style="flex: 1;">
+        <img alt="Авто" src="https://dwfvpbrjajjfs.cloudfront.net/media/default/0001/24/45b8bcc26478edf9222d3bfcd5da04ab03d75486.png" style="max-width: 100%; border-radius: 12px;"/>
+        </div>
+        <div class="animated-text" style="flex: 1; color: #333;">
+        <h2>Якість — наш пріоритет</h2>
+        <p>У нашому каталозі ви знайдете лише перевірені автозапчастини, які відповідають сучасним стандартам надійності та безпеки.</p>
+        </div>
+        </section>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Контакти</h2>
+                <p>Ми завжди раді допомогти вам!</p>
+            </div>
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 1;">
+                    <h3>Наші контакти</h3>
+                    <p><strong>Адреса:</strong> м. Самбір вул. Котляревського 11    </p>
+                    <p><strong>Телефон:</strong> +380 (99) 123-45-67</p>
+                    <p><strong>Email:</strong> info@autoking.com</p>
+                    <p><strong>Графік роботи:</strong> Пн-Пт: 9:00-18:00, Сб: 10:00-15:00</p>
+                </div>
+                <div style="flex: 1;">
+                    <h3>Напишіть нам</h3>
+                    <form action="#" method="post">
+                        <input type="text" name="name" placeholder="Ваше ім'я" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="email" name="email" placeholder="Ваш email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;">
+                        <textarea name="message" placeholder="Ваше повідомлення" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; height: 120px;"></textarea>
+                        <button type="submit" class="btn">Відправити</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>АвтоКінг</h3>
+                    <p>Інтернет-магазин якісних автозапчастин для всіх марок автомобілів.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="#home">Головна</a></li>
+                        <li><a href="#about">Про нас</a></li>
+                        <li><a href="#products">Товари</a></li>
+                        <li><a href="#blog">Блог</a></li>
+                        <li><a href="#contact">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакти</h3>
+                    <ul>
+                        <li>м. Самбір вул. Котляревського 11 </li>
+                        <li>+380 (99) 123-45-67</li>
+                        <li>info@autoking.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 АвтоКінг. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Кошик функціонал
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            renderCartItems();
+        }
+        
+        function renderCartItems() {
+            const itemsContainer = document.getElementById('cartItems');
+            const total = document.getElementById('cartTotal');
+            itemsContainer.innerHTML = '';
+            let sum = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                sum += itemTotal;
+                
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.name} × ${item.quantity} = ${itemTotal} грн</span>
+                    <button onclick="removeItem(${index})" style="background: none; border: none; color: var(--danger-color); cursor: pointer;">✖</button>
+                `;
+                itemsContainer.appendChild(li);
+            });
+            
+            total.textContent = sum;
+        }
+        
+        function clearCart() {
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartCount();
+            renderCartItems();
+        }
+        
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+        
+        function goToPayment() {
+            if (cart.length === 0) {
+                alert('Ваш кошик порожній!');
+                return;
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = "checkout.html";
+        }
+        
+        // Після завантаження сторінки
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            
+            // Анімація при скролі
+            const animateElements = document.querySelectorAll('.animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Закриття кошика при кліку поза ним
+            document.addEventListener('click', function(event) {
+                const cartSidebar = document.getElementById('cartSidebar');
+                const cartBtn = document.querySelector('.floating-cart');
+                if (!cartSidebar.contains(event.target) && !cartBtn.contains(event.target)) {
+                    cartSidebar.classList.remove('open');
+                }
+            });
+        });
+
+     
+</script>
+<style>
+#catalogMenu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 1000;
+  width: auto;
+  min-width: 300px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+
+  
+
+}
+
+
+.brand-block {
+  margin-bottom: 20px;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.model-block {
+  display: none;
+  margin-left: 20px;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.brand-toggle:hover .model-block {
+  display: flex;
+}
+
+.brand-block:hover .model-block {
+  display: flex;
+}
+
+.model-name {
+  font-size: 1.1rem;
+  color: #f8f9fa;
+  cursor: default;
+}
+
+.parts-list {
+  margin-left: 20px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.parts-list a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.parts-list a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+
+</style>
+<script>
+catalogButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  catalogMenu.style.display = catalogMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', function(event) {
+    const catalogMenu = document.getElementById('catalogMenu');
+    const catalogButton = document.getElementById('catalogButton');
+
+    if (!catalogButton.contains(event.target) && !catalogMenu.contains(event.target)) {
+      if (catalogMenu.style.display === 'block') {
+        catalogMenu.style.display = 'none';
+      }
+    }
+  });
+
+
+
+</script>
+</body>
+</html>

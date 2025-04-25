@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моторне масло 5W-40 - АвтоКінг</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --primary-hover: #878787;
+            --secondary: #333;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border: #dee2e6;
+            --success: #28a745;
+            --danger: #979797;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        .page-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs {
+            padding: 15px 0;
+            font-size: 14px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumbs span {
+            margin: 0 5px;
+            color: var(--gray);
+        }
+        
+        /* Product Page */
+        .product-page {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .product-gallery {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #fff;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Modal for image zoom */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+        
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .close-modal:hover {
+            color: #ddd;
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 1001;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        /* Product Info */
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .product-sku {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .product-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .availability {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--success);
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .unavailable {
+            background-color: var(--danger);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(227, 6, 19, 0.1);
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border: 1px solid var(--border);
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-left: none;
+            border-right: none;
+            font-size: 16px;
+        }
+        
+        .product-tabs {
+            width: 100%;
+            margin-top: 50px;
+        }
+        
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            padding: 20px;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .product-specs {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .product-specs tr:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        .product-specs td {
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+        }
+        
+        .product-specs td:first-child {
+            font-weight: 500;
+            width: 30%;
+        }
+        
+        /* Reviews */
+        .review-form {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .review-form h4 {
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+        }
+        
+        .review {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .review-author {
+            font-weight: 500;
+            margin-right: 15px;
+        }
+        
+        .review-rating {
+            color: #ffc107;
+            margin-right: 15px;
+        }
+        
+        .review-date {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .delete-review {
+            color: var(--danger);
+            cursor: pointer;
+            margin-left: auto;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        
+        .delete-review:hover {
+            text-decoration: none;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .cart-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .close-cart {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .close-cart:hover {
+            color: var(--dark);
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-item-quantity button {
+            width: 25px;
+            height: 25px;
+            background: var(--light);
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+        
+        .cart-item-quantity input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-left: none;
+            border-right: none;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 18px;
+            font-weight: 700;
+            text-align: right;
+        }
+        
+        .cart-actions {
+            padding: 0 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Floating Cart */
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(100, 100, 100, 0.3);
+            cursor: pointer;
+            z-index: 998;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-cart:hover {
+            background: var(--primary-hover);
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: white;
+            color: var(--primary);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            border: 2px solid var(--primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-image {
+                height: 300px;
+            }
+            
+            .product-title {
+                font-size: 24px;
+            }
+            
+            .product-price {
+                font-size: 28px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .cart-sidebar.active {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="/" class="logo">AUTOKING</a>
+                <div class="user-actions">
+                    <!-- Тут можна додати посилання на особистий кабінет, авторизацію тощо -->
+                </div>
+            </div>
+            
+            <nav class="breadcrumbs">
+                <a href="/">Головна</a>
+                <span>/</span>
+                <a href="/catalog">Каталог</a>
+                <span>/</span>
+                <a href="/catalog/motor-oils">Моторні масла</a>
+                <span>/</span>
+                <a href="#">Моторне масло 5W-40</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Product Page -->
+    <main class="container">
+        <div class="product-page">
+            <div class="product-gallery">
+                <img id="mainImage" src="https://via.placeholder.com/800x600?text=Motor+Oil+5W-40" alt="Моторне масло 5W-40" class="main-image" onclick="openImageModal()">
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">Моторне масло 5W-40</h1>
+                <div class="product-sku">Код товару: MOBIL-5W40</div>
+                <div class="product-price">450 грн</div>
+                <span class="availability">В наявності</span>
+                
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input" id="quantity">
+                    <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="btn btn-primary" onclick="addToCart()">Купити</button>
+                </div>
+                
+                <div class="product-short-desc">
+                    <p>Високоякісне синтетичне моторне масло для сучасних двигунів. Забезпечує відмінний захист двигуна при будь-яких температурах.</p>
+                    <ul>
+                        <li>Повністю синтетичне</li>
+                        <li>API SN/CF</li>
+                        <li>ACEA A3/B4</li>
+                        <li>Об'єм: 5л</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-tabs">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="openTab('description')">Опис</button>
+                <button class="tab-btn" onclick="openTab('specs')">Характеристики</button>
+                <button class="tab-btn" onclick="openTab('reviews')">Відгуки</button>
+                <button class="tab-btn" onclick="openTab('delivery')">Доставка</button>
+            </div>
+            
+            <div id="description" class="tab-content active">
+                <h3>Повний опис товару</h3>
+                <p>Моторне масло Mobil Super 3000 X1 5W-40 - це повністю синтетичне моторне масло преміум-класу, розроблене для забезпечення видатної продуктивності та захисту сучасних бензинових і дизельних двигунів у всіх умовах експлуатації.</p>
+                <p>Переваги:</p>
+                <ul>
+                    <li>Відмінний захист двигуна при високих температурах</li>
+                    <li>Швидке прокачування при низьких температурах</li>
+                    <li>Зменшення тертя та зносу деталей двигуна</li>
+                    <li>Захист від нагароутворення та шламу</li>
+                    <li>Оптимальна робота каталітичного нейтралізатора</li>
+                </ul>
+                <p>Рекомендовано для більшості сучасних автомобілів європейських, американських та азійських виробників.</p>
+            </div>
+            
+            <div id="specs" class="tab-content">
+                <table class="product-specs">
+                    <tr>
+                        <td>Бренд</td>
+                        <td>Mobil</td>
+                    </tr>
+                    <tr>
+                        <td>В'язкість</td>
+                        <td>5W-40</td>
+                    </tr>
+                    <tr>
+                        <td>Тип</td>
+                        <td>Повністю синтетичне</td>
+                    </tr>
+                    <tr>
+                        <td>API</td>
+                        <td>SN/CF</td>
+                    </tr>
+                    <tr>
+                        <td>ACEA</td>
+                        <td>A3/B4</td>
+                    </tr>
+                    <tr>
+                        <td>Об'єм</td>
+                        <td>5 літрів</td>
+                    </tr>
+                    <tr>
+                        <td>Країна виробник</td>
+                        <td>Бельгія</td>
+                    </tr>
+                    <tr>
+                        <td>Артикул</td>
+                        <td>MOBIL-5W40</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="reviews" class="tab-content">
+                <h3>Відгуки про товар</h3>
+                <div id="reviewsList">
+                    <!-- Reviews will be loaded here -->
+                </div>
+                
+                <div class="review-form">
+                    <h4>Залишити відгук</h4>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <label for="reviewName">Ваше ім'я</label>
+                            <input type="text" id="reviewName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewRating">Оцінка</label>
+                            <select id="reviewRating" required>
+                                <option value="5">★★★★★ Відмінно</option>
+                                <option value="4">★★★★☆ Добре</option>
+                                <option value="3">★★★☆☆ Задовільно</option>
+                                <option value="2">★★☆☆☆ Погано</option>
+                                <option value="1">★☆☆☆☆ Дуже погано</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Ваш відгук</label>
+                            <textarea id="reviewText" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Надіслати відгук</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="delivery" class="tab-content">
+                <h3>Умови доставки та оплати</h3>
+                <p>Доставка здійснюється по всій Україні протягом 1-3 днів.</p>
+                <p>Способи доставки:</p>
+                <ul>
+                    <li>Нова Пошта (відділення або кур'єр)</li>
+                    <li>Укрпошта</li>
+                    <li>Самовивіз з нашого складу (м. Київ)</li>
+                </ul>
+                <p>Способи оплати:</p>
+                <ul>
+                    <li>Готівкою при отриманні</li>
+                    <li>Онлайн оплата карткою</li>
+                    <li>Безготівковий розрахунок для юридичних осіб</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <div class="modal-content">
+            <span class="prev" onclick="changeModalImage(-1)">&#10094;</span>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <span class="next" onclick="changeModalImage(1)">&#10095;</span>
+        </div>
+    </div>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title">Кошик</div>
+            <div class="close-cart" onclick="toggleCart()">&times;</div>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-total" id="cartTotal">
+            Всього: 0 грн
+        </div>
+        <div class="cart-actions">
+            <button class="btn btn-primary" onclick="checkout()">Оформити замовлення</button>
+            <button class="btn btn-outline" onclick="clearCart()">Очистити кошик</button>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    
+    <!-- Floating Cart -->
+    <div class="floating-cart" onclick="toggleCart()">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+    
+    <script>
+        // Product data
+        const product = {
+            id: 1,
+            name: "Моторне масло 5W-40",
+            price: 450,
+            image: "https://via.placeholder.com/800x600?text=Motor+Oil+5W-40",
+            images: [
+                "https://via.placeholder.com/800x600?text=Motor+Oil+5W-40+1",
+                "https://via.placeholder.com/800x600?text=Motor+Oil+5W-40+2",
+                "https://via.placeholder.com/800x600?text=Motor+Oil+5W-40+3"
+            ]
+        };
+        
+        // Current user for reviews
+        let currentUser = "Гість";
+        
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const totalElement = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="padding: 20px; text-align: center;">Ваш кошик порожній</p>';
+                totalElement.textContent = 'Всього: 0 грн';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image || product.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${item.price} грн</div>
+                        <div class="cart-item-quantity">
+                            <button onclick="updateCartItem(${index}, -1)">-</button>
+                            <input type="number" value="${item.quantity}" min="1" onchange="updateCartItemQuantity(${index}, this.value)">
+                            <button onclick="updateCartItem(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(itemElement);
+                
+                total += item.price * item.quantity;
+            });
+            
+            totalElement.textContent = `Всього: ${total} грн`;
+        }
+        
+        function addToCart() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const existing = cart.find(item => item.id === product.id);
+            
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            
+            // Animation
+            const btn = event.target;
+            btn.textContent = 'Додано!';
+            btn.style.backgroundColor = '#28a745';
+            btn.style.borderColor = '#28a745';
+            
+            setTimeout(() => {
+                btn.textContent = 'Купити';
+                btn.style.backgroundColor = '';
+                btn.style.borderColor = '';
+            }, 1000);
+        }
+        
+        function updateCartItem(index, change) {
+            cart[index].quantity += change;
+            
+            if (cart[index].quantity < 1) {
+                cart[index].quantity = 1;
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+        
+        function updateCartItemQuantity(index, value) {
+            const quantity = parseInt(value) || 1;
+            cart[index].quantity = quantity;
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+        
+        function clearCart() {
+            if (confirm('Ви впевнені, що хочете очистити кошик?')) {
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                renderCart();
+            }
+        }
+        
+        function checkout() {
+            alert('Функція оформлення замовлення буде реалізована пізніше');
+        }
+        
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+        
+        // Image modal functionality
+        let currentImageIndex = 0;
+        
+        function openImageModal() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modal.style.display = "block";
+            modalImg.src = product.images[currentImageIndex];
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        function changeModalImage(step) {
+            currentImageIndex += step;
+            
+            if (currentImageIndex >= product.images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = product.images.length - 1;
+            }
+            
+            document.getElementById('modalImage').src = product.images[currentImageIndex];
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('imageModal')) {
+                closeImageModal();
+            }
+        };
+        
+        // Reviews functionality
+        let reviews = JSON.parse(localStorage.getItem('productReviews')) || [
+            {
+                id: 1,
+                author: "Іван Петренко",
+                rating: 5,
+                text: "Використовую це масло вже 3 роки на своїй Audi A4. Двигун працює тихо, без диму. Рекомендую!",
+                date: "15.05.2023"
+            },
+            {
+                id: 2,
+                author: "Олександр Коваль",
+                rating: 4,
+                text: "Хороше масло за свої гроші. Після 10 тис. км пробігу стан нормальний, втрат майже немає.",
+                date: "02.04.2023"
+            }
+        ];
+        
+        function renderReviews() {
+            const container = document.getElementById('reviewsList');
+            container.innerHTML = '';
+            
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review';
+                
+                // Додаємо кнопку видалення тільки якщо відгук належить поточному користувачу
+                const deleteButton = review.author === currentUser 
+                    ? `<div class="delete-review" onclick="deleteReview(${review.id})">Видалити</div>`
+                    : '';
+                    
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">${review.author}</div>
+                        <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+                        <div class="review-date">${review.date}</div>
+                        ${deleteButton}
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                `;
+                container.appendChild(reviewElement);
+            });
+        }
+        
+        function deleteReview(id) {
+            if (confirm('Ви впевнені, що хочете видалити цей відгук?')) {
+                reviews = reviews.filter(review => review.id !== id);
+                localStorage.setItem('productReviews', JSON.stringify(reviews));
+                renderReviews();
+            }
+        }
+        
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const authorName = document.getElementById('reviewName').value;
+            
+            const newReview = {
+                id: Date.now(),
+                author: authorName,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                text: document.getElementById('reviewText').value,
+                date: new Date().toLocaleDateString('uk-UA')
+            };
+            
+            reviews.push(newReview);
+            localStorage.setItem('productReviews', JSON.stringify(reviews));
+            
+            // Оновлюємо поточного користувача
+            currentUser = authorName;
+            
+            document.getElementById('reviewForm').reset();
+            renderReviews();
+            alert('Дякуємо за ваш відгук!');
+        });
+        
+        // Tabs functionality
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Quantity selector
+        function changeQuantity(change) {
+            const input = document.getElementById('quantity');
+            let value = parseInt(input.value) + change;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            renderCart();
+            renderReviews();
+            
+            // Set main product image
+            document.getElementById('mainImage').src = product.images[0];
+        });
+    </script>
+</body>
+</html>
