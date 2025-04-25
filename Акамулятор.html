@@ -1120,5 +1120,11 @@
             `;
         }
     });</script>
+    <form action="order.php" method="POST">
+    <input type="text" name="name" placeholder="Ім'я" required>
+    <input type="tel" name="phone" placeholder="Телефон" required>
+    <input type="hidden" name="product_id" value="123">
+    <button type="submit">Замовити</button>
+</form>
 </body>
 </html>
